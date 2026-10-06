@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Local data
+.env
+.local-run/
+configs/local.yaml
+data/**
+!data/.gitkeep
+!data/workspace/.gitkeep
+!data/memory/.gitkeep
+!data/sessions/.gitkeep
+
+# Frontend
+node_modules/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Private Assistent</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell" aria-labelledby="page-title">
+      <section class="sidebar" aria-label="助手状态">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">PA</div>
+          <div>
+            <h1 id="page-title">Private Assistent</h1>
+            <p>本地 AI 助手工作台</p>
+          </div>
+        </div>
+
+        <dl class="status-list">
+          <div>
+            <dt>服务状态</dt>
+            <dd id="service-status">检查中</dd>
+          </div>
+          <div>
+            <dt>默认模型</dt>
+            <dd id="model-status">加载中</dd>
+          </div>
+          <div>
+            <dt>当前会话</dt>
+            <dd id="session-status">加载中</dd>
+          </div>
+        </dl>
+
+        <form id="model-form" class="model-form" aria-labelledby="model-title">
+          <h2 id="model-title">模型选择</h2>
+          <label for="provider-select">提供商</label>
+          <select id="provider-select" name="provider"></select>
+          <label for="model-select">模型</label>
+          <select id="model-select" name="model"></select>
+          <button id="save-model-button" type="submit">保存默认模型</button>
+          <p id="model-form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <section class="note" aria-labelledby="next-title">
+          <h2 id="next-title">当前阶段</h2>
+          <p>已支持 Provider 配置、默认模型选择和基础会话上下文。当前阶段会持久保存多轮消息，并按窗口构建 live context。</p>
+        </section>
+      </section>
+
+      <section class="chat-panel" aria-label="聊天区域">
+        <div class="chat-header">
+          <div>
+            <h2>对话</h2>
+            <p>输入一个任务，助手会带上当前会话上下文继续回答。</p>
+          </div>
+          <button id="clear-button" class="ghost-button" type="button">清空</button>
+        </div>
+
+        <div id="messages" class="messages" role="log" aria-live="polite" aria-label="对话消息">
+          <article class="message assistant">
+            <p>你好，我已经准备好。你可以先让我总结文件、规划任务，或测试当前本地运行时。</p>
+          </article>
+        </div>
+
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="message-input">消息</label>
+          <textarea
+            id="message-input"
+            name="message"
+            rows="3"
+            placeholder="输入消息，例如：帮我规划这个本地助手的下一步开发"
+            required
+          ></textarea>
+          <div class="composer-actions">
+            <p id="form-status" role="status" aria-live="polite"></p>
+            <button id="send-button" type="submit">发送</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
+
